@@ -335,7 +335,9 @@ module.exports = tobz = async (tobz, message) => {
         const url = args.length !== 0 ? args[0] : ''
         const q = args.join(' ')
         const isQuotedImage = quotedMsg && quotedMsg.type === 'image'
+        const StickerMetadata = { author : 'Owner? @Niskata', pack: 'Renge ~Bot' , keepScale: true }
         const reason = q ? q : 'Gada'
+	const gifxyz = { crop: false, square: 240, fps: 30, loop: 0, startTime: `00:00:00.0`, endTime: `00:00:10.0` }
 
         const vhtearkey = 'YOUR_APIKEY' // https://api.vhtear.com
         const barbarkey = 'lGjYt4zA5SQlTDx9z9Ca' // https://mhankbarbar.herokuapp.com/api
@@ -595,29 +597,21 @@ module.exports = tobz = async (tobz, message) => {
             break
         case '#sticker':
         case '#stiker':
-		case '#s':
+	case '#s':
             tobz.reply(from, '_Tunggu ±1 Menit ..._', id)    
-            if (isMedia || isQuotedImage) {
-				const encryptMedia = isQuotedImage ? quotedMsg : message
-                const _mimetype = isQuotedImage ? quotedMsg.mimetype : mimetype
-                const mediaData = await decryptMedia(encryptMedia, uaOverride)
-                const imageBase64 = `data:${_mimetype};base64,${mediaData.toString('base64')}`
-                await tobz.sendImageAsSticker(from, imageBase64)
-            } else if (isQuotedImage) {
+            if (isMedia && type === 'image') {
+                const mediaData = await decryptMedia(message, uaOverride)
+                const imageBase64 = `data:${mimetype};base64,${mediaData.toString('base64')}`
+                await tobz.sendImageAsSticker(from, imageBase64, StickerMetadata)
+				console.log(color(`Sticker processed for ${processTime(t, moment())} seconds`, 'aqua'))
+            } else if (quotedMsg && quotedMsg.type == 'image') {
                 const mediaData = await decryptMedia(quotedMsg, uaOverride)
                 const imageBase64 = `data:${quotedMsg.mimetype};base64,${mediaData.toString('base64')}`
-                await tobz.sendImageAsSticker(from, imageBase64)
-            } else if (args.length === 2) {
-                const url = args[1]
-                if (url.match(isUrl)) {
-                    await tobz.sendStickerfromUrl(from, url, { method: 'get' })
-                        .catch(err => console.log('Caught exception: ', err))
-                } else {
-                    tobz.reply(from, mess.error.Iv, id)
-                }
-            } else {
-                    tobz.reply(from, mess.error.St, id)
-            }
+                await tobz.sendImageAsSticker(from, imageBase64, StickerMetadata)
+				console.log(color(`Sticker processed for ${processTime(t, moment())} seconds`, 'aqua'))
+			} else {
+				tobz.reply(from, mess.error.St, id)
+			}			
             break
         case '#stikernobg': 
         case '#snobg':
@@ -681,20 +675,35 @@ module.exports = tobz = async (tobz, message) => {
         case '#stickergif':
         case '#stikergif':
         case '#sgif':
-            if (isMedia) {
-                if (mimetype === 'video/mp4' && message.duration < 15 || mimetype === 'image/gif' && message.duration < 15) {
+            if (isMedia && type === 'video' || mimetype == 'sticker/gif') {
+                tobz.reply(from, mess.wait, id)
+                try {
                     const mediaData = await decryptMedia(message, uaOverride)
-                    tobz.reply(from, '[WAIT] Sedang di proses⏳ silahkan tunggu ± 1 min!', id)
-                    const filename = `./media/aswu.${mimetype.split('/')[1]}`
-                    await fs.writeFileSync(filename, mediaData)
-                    await exec(`gify ${filename} ./media/output.gif --fps=30 --scale=240:240`, async function (error, stdout, stderr) {
-                        const gif = await fs.readFileSync('./media/output.gif', { encoding: "base64" })
-                        await tobz.sendImageAsSticker(from, `data:image/gif;base64,${gif.toString('base64')}`)
+                    const vidbase = `data:${mimetype};base64,${mediaData.toString('base64')}`
+                    await tobz.sendMp4AsSticker(from, vidbase, gifxyz, StickerMetadata)
+                    .then(async () => {
+                        console.log(color(`Sticker Gif processed for ${processTime(t, moment())} seconds`, 'aqua'))
                     })
-                } else (
-                    tobz.reply(from, '[❗] Kirim video dengan caption *#stickerGif* max 5 sec!', id)
-                )
-            }
+                } catch (err) {
+                    console.log(err)
+                    tobz.reply(from, 'Durasi video terlalu panjang, mohon kecilkan sedikit\nmax 9 detik', id)
+                }
+            } else if(quotedMsg && quotedMsg.type === 'sticker' || quotedMsg && quotedMsg.type === 'video') {
+                        tobz.reply(from, mess.wait, id)
+                        try {
+                            const mediaData = await decryptMedia(quotedMsg, uaOverride)
+                            const videoBase64 = `data:${quotedMsg.mimetype};base64,${mediaData.toString('base64')}`
+                            await tobz.sendMp4AsSticker(from, videoBase64, gifxyz, StickerMetadata)
+                                .then(async () => {
+                                    console.log(color(`Sticker Gif processed for ${processTime(t, moment())} seconds`, 'aqua'))       
+                                })
+                        } catch (err) {
+                            console.error(err)
+                            await tobz.reply(from, `Ukuran video terlalu besar\nMaksimal size adalah 1MB!`, id)
+                        }
+                    } else {
+                        await tobz.reply(from, `Ukuran video terlalu besar`, id)
+                    }
             break
         case '#stickertoimg':
         case '#stimg':
