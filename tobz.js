@@ -1253,16 +1253,33 @@ ${desc}`)
             break
         case '#spamcall':
             if (!isOwner, !isAdmin) return tobz.reply(from, 'Perintah ini hanya untuk Owner & Admin bot', id)
-            argz = body.trim().split(' ')
-            console.log(...argz[1])
-            var slicedArgs = Array.prototype.slice.call(argz[1]);
-            console.log(slicedArgs)
-            const spam = await slicedArgs.join(' ')
-            console.log(spam)
-            const call2 = await axios.get('https://tobz-api.herokuapp.com/api/spamcall?no=' + spam + '&apikey=' + tobzkey)
-            const { logs } = call2.data
-                await tobz.sendText(from, `Logs : ${logs}` + '.')
+            const spam = body.slice(10)
+            const call2 = await axios.get('https://h4ck3rs404-api.herokuapp.com/api/spamcall?number='+spam+'&apikey=404Api')
+            const logs  = call2.data.result
+                await tobz.sendText(from, logs, id)
             break
+	case '#play':
+            if (!isGroupMsg) return tobz.reply(from, `Maaf command ini hanya bisa digunakan di dalam grup!`, id)
+            if (args.length == 1) return tobz.reply(from, `Untuk mencari lagu dari youtube\n\nPenggunaan: #play judul lagu`, id)
+            try {
+                const serplay = body.slice(6)
+                const webplay = await fetch(`http://api.zeks.xyz/api/ytplaymp3?apikey=apivinz&q=${serplay}`)
+                if (!webplay.ok) throw new Error(`Error Play : ${webplay.statusText}`)
+                const webplay2 = await webplay.json()
+                 if (webplay2.status == false) {
+                    tobz.reply(from, `*Maaf Terdapat kesalahan saat mengambil data, mohon pilih media lain...*`, id)
+                } else {
+                    if (Number(webplay2.result.size.split(' MB')[0]) >= 10.00) return tobz.reply(from, 'Maaf durasi music sudah melebihi batas maksimal 10 MB!', id)
+                    const { thumbnail, url_audio, size, source, title, duration } = await webplay2.result
+                    const captplay = `*「 PLAY 」*\n\n• *Judul* : ${title}\n• *Durasi* : ${duration}\n• *Filesize* : ${size}\n• *Source* : ${source}\n\n_*Music Sedang Dikirim*_`
+                    tobz.sendFileFromUrl(from, thumbnail, `thumb.jpg`, captplay, id)
+                    await tobz.sendFileFromUrl(from, url_audio, `${title}.mp3`, '', id).catch(() => tobz.reply(from, mess.error.Yt4, id))
+                }
+            } catch (err) {
+                tobz.sendText(ownerNumber, 'Error Play : '+ err)
+                tobz.reply(from, 'Jangan meminta lagu yang sama dengan sebelumnya!', id)
+            }
+            break   		        
         case '#ytmp3':
             if (!isGroupMsg) return tobz.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
             if (isLimit(serial)) return tobz.reply(from, `Maaf ${pushname}, Kuota Limit Kamu Sudah Habis, Ketik #limit Untuk Mengecek Kuota Limit Kamu`, id)
