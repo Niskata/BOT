@@ -1518,16 +1518,21 @@ Menunggu video...`
             console.log(sigot)
             break
         case '#igdl': 
-                    if (args.length == 0) return tobz.reply(from, `Kirim perintah #ig linkig`, id)
-                    tobz.reply(from, '_Scrapping Metadataa..._', id)
-                    axios.get(`https://api.zeks.xyz/api/ig?url=${body.slice(5)}&apikey=apivinz`)
-			        .then(async(res) => {
-			            tobz.sendFileFromUrl(from, `${res.data.result[0].url}`, 'ig.jpg', '', id)
-			            .catch(() => {
-			        tobz.reply(from, 'Error njing', id)
-	            	})
-	                })
-	            break
+                if (args.length == 0) return tobz.reply(from, `Kirim perintah #ig linkig`, id)
+                tobz.reply(from, '_Scrapping Metadataa..._', id)
+                axios.get(`https://api.zeks.xyz/api/ig?url=${body.slice(5)}&apikey=apivinz`)
+			    .then(async(res) => {
+                    if (res.data.result.includes('.mp4')) {
+                        var ext = '.mp4'
+                    } else {
+                        var ext = '.jpg'
+                    }
+			        tobz.sendFileFromUrl(from, `${res.data.result[0].url}`, `ig${ext}`, '', id)
+			        .catch(() => {
+			    tobz.reply(from, 'Error njing', id)
+	            })
+	            })
+	        break
         case '#starmaker': //gabisa
             if (!isGroupMsg) return tobz.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
             if (args.length === 1) return tobz.reply(from, 'Kirim perintah *#starmaker [linkStarmaker]* untuk contoh silahkan kirim perintah *#readme*')
