@@ -13,6 +13,7 @@ const urlShortener = require('./lib/shortener')
 const nhentai = require('nhentai-js')
 const { API } = require('nhentai-api')
 const google = require('google-it')
+const genshin = require('genshin')
 const translatte = require('translatte')
 const { stdout } = require('process')
 const quotedd = require('./lib/quote')
@@ -630,6 +631,20 @@ module.exports = tobz = async (tobz, message) => {
                     console.log(err)
                 }
             }
+            break
+	 case prefix+'genshininfo': // chika chantexxzz
+         case prefix+'genshin':
+                if (!q) return await tobz.reply(from, 'Format salah !', id)
+                await bocchi.reply(from, 'tunggu sebentar!', id)
+                try {
+                    console.log('Searching for character...')
+                    const character = await genshin.characters(q)
+                    await tobz.sendFileFromUrl(from, character.image, `${character.name}.jpg`, `*「 GENSHIN IMPACT 」*\n\n*${character.name}*\n${character.description}\n\n"_${character.quote}_" - ${character.name}\n\n➸ *Name*: ${character.name}\n➸ *Seiyuu*: ${character.cv}\n➸ *Region*: ${character.city}\n➸ *Rating*: ${character.rating}\n➸ *Vision*: ${character.element}\n➸ *Weapon*: ${character.weapon}\n\n${character.url}`)
+                    console.log('Success sending Genshin Impact character!')
+                } catch (err) {
+                    console.error(err)
+                    await tobz.reply(from, 'Error or character not found!', id)
+                }
             break
         case '#ttp':
             if (args.length === 1) return tobz.reply(from, 'Kirim perintah *#ttp [optional]*, Contoh : *#maps Jakarta*')        
