@@ -634,7 +634,7 @@ module.exports = tobz = async (tobz, message) => {
 	 case prefix+'genshininfo': // chika chantexxzz
          case prefix+'genshin':
                 if (!q) return await tobz.reply(from, 'Format salah !', id)
-                await bocchi.reply(from, 'tunggu sebentar!', id)
+                await tobz.reply(from, 'tunggu sebentar!', id)
                 try {
                     console.log('Searching for character...')
                     const character = await genshin.characters(q)
