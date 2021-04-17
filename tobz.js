@@ -2079,12 +2079,6 @@ Menunggu video...`
             }
             await tobz.reply(from, admn, id)
             break
-	case '#shutdown:'
-	       if (!isOwner) return tobz.sendText(from, 'Perintah ini hanya bisa digunakan oleh Owner Renge !')
-		await tobz.sendText(from, '*[WARN]* Kyaa Aku Mati :(', id')
-		await sleep(5000)
-                tobz.close()
-		break
         case '#restart':
             if(isOwner){
                 tobz.sendText(from, '*[WARN]* Restarting ...')
