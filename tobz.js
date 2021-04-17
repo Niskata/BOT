@@ -963,10 +963,9 @@ ${desc}`)
             const base64 = `data:image/jpg;base64,${image.toString("base64")}`
             tobz.sendImage(from, base64, 'ptrs.jpg', `*Pinterest*\n\n*Hasil Pencarian : ${ptrsq}*`)
             break
-        case '#loli': 
-            const loli = await get.get('http://docs-jojo.herokuapp.com/api/randomloli').json()
-            tobz.sendFileFromUrl(from, loli.result, `Loli.jpeg`, 'lolinya gan...', id)
-            await limitAdd(serial)
+        case '#loli':
+            if (!isGroupMsg) return tobz.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
+            tobz.sendFileFromUrl(from, `https://docs-jojo.herokuapp.com/api/randomloli`, 'loli.jpeg', '[ LOLINYA NUMPANG LEWAT OM ]')
             break
         case '#shota':
             if (!isGroupMsg) return tobz.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
