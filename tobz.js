@@ -313,7 +313,6 @@ module.exports = tobz = async (tobz, message) => {
         const isBotGroupAdmins = isGroupMsg ? groupAdmins.includes(botNumber + '@c.us') : false
         const serial = sender.id
 
-	const command = comm
         const isAdmin = adminNumber.includes(sender.id)
         const ownerNumber = '6282327759039@c.us'
         const isOwner = ownerNumber.includes(sender.id)
