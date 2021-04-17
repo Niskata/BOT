@@ -963,10 +963,9 @@ ${desc}`)
             const base64 = `data:image/jpg;base64,${image.toString("base64")}`
             tobz.sendImage(from, base64, 'ptrs.jpg', `*Pinterest*\n\n*Hasil Pencarian : ${ptrsq}*`)
             break
-        case '#loli': //gabisa
-            if (!isOwner) return tobz.reply(from, 'Sedang maintenance!', id)
-            const loli = await axios.get('http://docs-jojo.herokuapp.com/api/randomloli')
-            tobz.sendImage(from, loli.result, `NsfwNeko.jpg`, 'NsfwNeko!', id)
+        case '#loli': 
+            const loli = await get.get('http://docs-jojo.herokuapp.com/api/randomloli').json()
+            tobz.sendFileFromUrl(from, loli.result, `Loli.jpeg`, 'lolinya gan...', id)
             await limitAdd(serial)
             break
         case '#shota':
@@ -1231,14 +1230,14 @@ ${desc}`)
            }
           break
         // MEDIA //
-        case '#nulis' : //gabisa
+/*        case '#nulis' :
             if (args.length < 1) return reply(`Teksnya mana kak? Contoh : ${prefix}nulis2 kevin baik hati`)
-			const laysha = body.slice(8)
-			tobz.reply('「❗」WAIT BRO GUE NULIS DUMLU YAKAN')
-			const buff = await getBuffer(`https://api.zeks.xyz/api/nulis?text=${laysha}&apikey=apivinz`)
-            const cap = `Kalo Bisa Mendingan Nulis Sendiri ya Kak biar berkah :3`
-			tobz.sendFileFromUrl(from, buff, 'NULIS.jpg', cap, id)
-				break
+		const laysha = body.slice(8)
+		tobz.reply('「❗」WAIT BRO GUE NULIS DUMLU YAKAN')
+		const buff = await getBuffer(`https://api.zeks.xyz/api/nulis?text=${laysha}&apikey=apivinz`)
+           	 const cap = `Kalo Bisa Mendingan Nulis Sendiri ya Kak biar berkah :3`
+		tobz.sendFileFromUrl(from, buff, 'NULIS.jpg', cap, id)
+		break */
         case '#shorturl':
         case '#shortlink':
             if (args.length === 1) return tobz.reply(from, 'Kirim perintah *#shortlink [linkWeb]*\nContoh : *#bitly https://neonime.vip*', id)
@@ -1400,9 +1399,6 @@ ${desc}`)
             break
         case '#fb':
             if (!isGroupMsg) return tobz.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
-            if (isLimit(serial)) return tobz.reply(from, `Maaf ${pushname}, Kuota Limit Kamu Sudah Habis, Ketik #limit Untuk Mengecek Kuota Limit Kamu`, id)
-            
-            await limitAdd(serial)
             if (args.length === 1) return tobz.reply(from, 'Kirim perintah *#fb [linkFb]*\nContoh : *#fb https://www.facebook.com/24609282673/posts/10158628585367674/*', id)
             try {
             tobz.reply(from, mess.wait, id)
@@ -1417,9 +1413,6 @@ ${desc}`)
             break
         case '#tiktok':
             if (!isGroupMsg) return tobz.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
-            if (isLimit(serial)) return tobz.reply(from, `Maaf ${pushname}, Kuota Limit Kamu Sudah Habis, Ketik #limit Untuk Mengecek Kuota Limit Kamu`, id)
-            
-            await limitAdd(serial)
             if (args.length === 1) return tobz.reply(from, 'Kirim perintah *#tiktok [linkTiktok]*\nContoh : *#tiktok https://vt.tiktok.com/yqyjPX/*', id)
             try {
             tobz.reply(from, mess.wait, id)
@@ -1486,9 +1479,6 @@ Menunggu video...`
 
         case '#tiktokstalk': []
             if (!isGroupMsg) return tobz.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
-            if (isLimit(serial)) return tobz.reply(from, `Maaf ${pushname}, Kuota Limit Kamu Sudah Habis, Ketik #limit Untuk Mengecek Kuota Limit Kamu`, id)
-            
-            await limitAdd(serial)
             if (args.length === 1)  return tobz.reply(from, 'Kirim perintah *#tiktokstalk @username*\nContoh *#tiktokstalk @duar_amjay*', id)
             arg = body.trim().split(' ')
             console.log(...arg[1])
