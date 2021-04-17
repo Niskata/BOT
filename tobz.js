@@ -1229,14 +1229,13 @@ ${desc}`)
            }
           break
         // MEDIA //
-/*        case '#nulis' :
-            if (args.length < 1) return reply(`Teksnya mana kak? Contoh : ${prefix}nulis2 kevin baik hati`)
-		const laysha = body.slice(8)
-		tobz.reply('「❗」WAIT BRO GUE NULIS DUMLU YAKAN')
-		const buff = await getBuffer(`https://api.zeks.xyz/api/nulis?text=${laysha}&apikey=apivinz`)
-           	 const cap = `Kalo Bisa Mendingan Nulis Sendiri ya Kak biar berkah :3`
-		tobz.sendFileFromUrl(from, buff, 'NULIS.jpg', cap, id)
-		break */
+        case '#nulis':
+            if (args.length === 1) return tobz.reply(from, 'Kirim perintah *#nulis [teks]*', id)
+            const nulis = encodeURIComponent(body.slice(7))
+            tobz.reply(from, mess.wait, id)
+            const urlnulis = `https://api.zeks.xyz/api/nulis?text=${nulis}&apikey=apivinz`
+            await tobz.sendFileFromUrl(from, urlnulis, 'Nulis.jpeg', 'Nih anjim')
+            break
         case '#shorturl':
         case '#shortlink':
             if (args.length === 1) return tobz.reply(from, 'Kirim perintah *#shortlink [linkWeb]*\nContoh : *#bitly https://neonime.vip*', id)
