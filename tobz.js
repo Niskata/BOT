@@ -312,6 +312,7 @@ module.exports = tobz = async (tobz, message) => {
         const isBotGroupAdmins = isGroupMsg ? groupAdmins.includes(botNumber + '@c.us') : false
         const serial = sender.id
 
+	const command = comm
         const isAdmin = adminNumber.includes(sender.id)
         const ownerNumber = '6282327759039@c.us'
         const isOwner = ownerNumber.includes(sender.id)
@@ -2064,6 +2065,12 @@ Menunggu video...`
             }
             await tobz.reply(from, admn, id)
             break
+	case '#shutdown:'
+	       if (!isOwner) return tobz.sendText(from, 'Perintah ini hanya bisa digunakan oleh Owner Renge !')
+		await tobz.sendText(from, '*[WARN]* Kyaa Aku Mati :(', id')
+		await sleep(5000)
+                tobz.close()
+		break
         case '#restart':
             if(isOwner){
                 tobz.sendText(from, '*[WARN]* Restarting ...')
