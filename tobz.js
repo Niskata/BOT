@@ -13,7 +13,7 @@ const urlShortener = require('./lib/shortener')
 const nhentai = require('nhentai-js')
 const { API } = require('nhentai-api')
 const google = require('google-it')
-const genshin = require('genshin')
+//const genshin = require('genshin')
 const translatte = require('translatte')
 const { stdout } = require('process')
 const quotedd = require('./lib/quote')
@@ -631,7 +631,7 @@ module.exports = tobz = async (tobz, message) => {
                 }
             }
             break
-	 case prefix+'genshininfo': // chika chantexxzz
+/*	 case prefix+'genshininfo': // chika chantexxzz
          case prefix+'genshin':
                 if (!q) return await tobz.reply(from, 'Format salah !', id)
                 await tobz.reply(from, 'tunggu sebentar!', id)
@@ -644,7 +644,7 @@ module.exports = tobz = async (tobz, message) => {
                     console.error(err)
                     await tobz.reply(from, 'Error or character not found!', id)
                 }
-            break
+            break */
         case '#ttp':
             if (args.length === 1) return tobz.reply(from, 'Kirim perintah *#ttp [optional]*, Contoh : *#maps Jakarta*')        
             try
