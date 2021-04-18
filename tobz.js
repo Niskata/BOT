@@ -51,7 +51,7 @@ const {
     info, 
     sumbang, 
     readme, 
-    listChannel,
+    makercmd,
     commandArray
     } = require('./lib/help')
 
@@ -849,6 +849,52 @@ ${desc}`)
         case '#owner':
             tobz.sendContact(chatId, `6282327759039@c.us`)
             tobz.reply(from, 'Itu nomor Pacar ku, eh maksudnya Owner ku', id)
+            break
+	// maker menu
+        case '#hartatahta':
+            const harta1 = body.slice(12)
+            const harta = `https://api.zeks.xyz/api/hartatahta?text=${harta1}&apikey=apivinz`
+            await tobz.sendFileFromUrl(from, harta, 'HartaTahta.jepg', 'udah jadi kak')
+            break
+        case '#snow':
+            const nartu = body.slice(6)
+            const naruto = `https://akirainfo.site/snow3d?apikey=e7d6410e4c5c&text=${nartu}`
+            await tobz.sendFileFromUrl(from, naruto, `naruto.jpeg`, 'Udah Jadi Kak!')
+            break
+        case '#wood':
+            const woo = body.slice(6)
+            const woode = `https://akirainfo.site/wooden3d?apikey=e7d6410e4c5c&text=${woo}`
+            await tobz.sendFileFromUrl(from, woode, `wooden.jpeg`, 'Udah Jadi Kak')
+            break
+        case '#hologram':
+            const holo = body.slice(10)
+            const holog = `https://akirainfo.site/hologram3d?apikey=e7d6410e4c5c&text=${holo}`
+            await tobz.sendFileFromUrl(from, holog, `hologram.jpeg`, 'Udah Jadi Kak')
+            break
+        case '#minion':
+            const mini = body.slice(8)
+            const minion = `https://akirainfo.site/minion3d?apikey=e7d6410e4c5c&text=${mini}`
+            await tobz.sendFileFromUrl(from, minion, `Minion.jpeg`, 'Udah Jadi Kak')
+            break
+        case '#neon':
+            const neo = body.slice(6)
+            const neon = `https://akirainfo.site/neon3d?apikey=e7d6410e4c5c&text=${neo}`
+            await tobz.sendFileFromUrl(from, neon, `Neon.jpeg`, 'Udah Jadi Kak')
+            break
+        case '#luxury':
+            const lux = body.slice(8)
+            const luxu = `https://akirainfo.site/luxury3d?apikey=e7d6410e4c5c&text=${lux}`
+            await tobz.sendFileFromUrl(from, luxu, `Luxury.jpeg`, 'Udah Jadi Kak')
+            break
+        case '#noel':
+            const noe = body.slice(6)
+            const noel = `https://akirainfo.site/noel3d?apikey=e7d6410e4c5c&text=${noe}`
+            await tobz.sendFileFromUrl(from, noel, `noel.jpeg`, 'Udah Jadi Kak')
+            break
+        case '#box':
+            const boo = body.slice(5)
+            const box = `https://akirainfo.site/box3d?apikey=e7d6410e4c5c&text=${boo}`
+            await tobz.sendFileFromUrl(from, box, `BOX.jpeg`, 'Udah Jadi Kak')
             break
         // ON OFF
         case '#nsfw':
@@ -2265,6 +2311,9 @@ Menunggu video...`
             break
         case '#rengegroup':
             tobz.reply(from, `_*Maaf kak Renge belum punya grub :D*_`, id)
+            break
+	case '#makermenu':
+            tobz.sendText(from, makercmd)
             break
         case '#groupmenu':
             tobz.sendText(from, groupcmd)
