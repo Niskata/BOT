@@ -1661,6 +1661,27 @@ Menunggu video...`
                 tobz.sendText(ownerNumber, 'Cak LonT Error : ' + err)
            }
            break
+	case '#tebakkata':
+            if (!isGroupMsg) return tobz.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
+            try {
+            const tebk = await axios.get('https://leyscoders-api.herokuapp.com/api/tebak-kata?apikey=OneDayOneCharity')
+            if (tebk.data.error) return tobz.reply(from, tebk.data.error, id)
+            const tebk2 = `➸ Soal : ${tebk.data.result.soal}`
+            const jwan = `➸ Jawaban : ${tebk.data.result.jawaban}`
+            tobz.reply(from, tebk2, id)
+            tobz.sendText(from, `_Batas Waktu 40 Detik !_`, id)
+            await sleep(20000)
+            tobz.sendText(from, `20 Detik Lagi...`, id)
+            await sleep(10000)
+            tobz.sendText(from, `10 Detik Lagi...`, id)
+            await sleep(10000)
+            tobz.reply(from, jwan, id)
+            } catch (err) {
+                console.error(err.message)
+                await tobz.sendFileFromUrl(from, errorurl2, 'error.png', '💔️ Maaf, Soal Quiz tidak ditemukan')
+                tobz.sendText(ownerNumber, 'Tebak Kata Error : ' + err)
+           }
+           break
         case '#caklontong':
             if (!isGroupMsg) return tobz.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
             try {
