@@ -1275,6 +1275,13 @@ ${desc}`)
            }
           break
         // MEDIA //
+	case '#asupan':
+            if (!isGroupMsg) return tobz.reply(from, 'Perintah ini hanya bisa dijalankan didalam grup!', id)
+            await tobz.reply(from, 'Matte nee onii-sama', id)
+            const asuu = await axios.get(`https://leyscoders-api.herokuapp.com/api/asupan?apikey=OneDayOneCharity`)
+            const asu1 = asuu.data.result
+            await tobz.sendFileFromUrl(from, asu1, `Asupan.mp4`, 'CAKEP YA KAK :3')
+            break
         case '#nulis':
             if (args.length === 1) return tobz.reply(from, 'Kirim perintah *#nulis [teks]*', id)
             const nulis = encodeURIComponent(body.slice(7))
