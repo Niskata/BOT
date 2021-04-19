@@ -851,6 +851,42 @@ ${desc}`)
             tobz.reply(from, 'Itu nomor Pacar ku, eh maksudnya Owner ku', id)
             break
 	// maker menu
+        case '#firework':
+            if (args.length === 1) return tobz.reply(from, `Kirim perintah *${prefix}firework [ Teks ]*, contoh *${prefix}firework renge*`, id)
+            const fire = body.slice(10)
+            const firew = `https://akirainfo.site/firework?apikey=e7d6410e4c5c&text=${fire}`
+            await tobz.sendFileFromUrl(from, firew, `firework.jpeg`, 'Udah Jadi Kak')
+            break
+        case '#ninja':
+            if (args.length == 1) return tobz.reply(from, `Ketik command ${prefix}ninja [text]|[nama]\nContoh ${prefix}ninja ini contohnya|tolll`, id)
+            var nin = body.slice(7).trim().split('|')
+            const ninja = `https://akirainfo.site/ninjalogo?apikey=e7d6410e4c5c&text1=${nin[0]}&text2=${nin[1]}`
+            await tobz.sendFileFromUrl(from, ninja, `NINJAH.jpeg`, 'Udah Jadi Kak')
+            break
+        case '#wolf':
+            if (args.length == 1) return tobz.reply(from, `Ketik command ${prefix}wolf [text]|[nama]\nContoh ${prefix}wolf ini contohnya|tolll`, id)
+            var wolf1 = body.slice(6).trim().split('|')
+            const wolf = `https://akirainfo.site/wolflogo?apikey=e7d6410e4c5c&text1=${wolf1[0]}&text2=${wolf1[1]}`
+            await tobz.sendFileFromUrl(from, wolf, `Wolf.jpeg`, 'Udah Jadi Kak')
+            break
+        case '#phlogo':
+            if (args.length == 1) return tobz.reply(from, `Ketik command ${prefix}pornhub [text]|[nama]\nContoh ${prefix}pornhub ini contohnya|tolll`, id)
+            var bdtrm = body.slice(9).trim().split('|')
+            const phlogo = `https://akirainfo.site/pornhub?apikey=e7d6410e4c5c&text1=${bdtrm[0]}&text2=${bdtrm[1]}`
+            await tobz.sendFileFromUrl(from, phlogo, `PHLOGO.jpeg`, 'Udah Jadi Kak')
+            break
+        case '#thunder':
+            if (args.length == 1) return tobz.reply(from, `Ketik command ${prefix}thunder [text]`, id)
+            const thund = body.slice(9)
+            const thun = `https://akirainfo.site/thunder?apikey=e7d6410e4c5c&text=${thund}`
+            await tobz.sendFileFromUrl(from, thun, `THUNDER.jpeg`, 'Udah Jadi Kak')
+            break
+        case '#blood':
+            if (args.length == 1) return tobz.reply(from, `Ketik command ${prefix}blood [text]`, id)
+            const bloo = body.slice(7)
+            const blood = `https://akirainfo.site/blood?apikey=e7d6410e4c5c&text=${bloo}`
+            await tobz.sendFileFromUrl(from, blood, `Blood.jpeg`, 'Udah Jadi Kak')
+            break
         case '#hartatahta':
             const harta1 = body.slice(12)
             const harta = `https://api.zeks.xyz/api/hartatahta?text=${harta1}&apikey=apivinz`
