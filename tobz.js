@@ -89,6 +89,7 @@ let stickerspam = JSON.parse(fs.readFileSync('./lib/database/stickerspam.json'))
 
 tobzkey = 'qNUJDjN82wbieEciNby6'
 prefix = '#'
+var timeStart = Date.now() / 1000
 let { 
     limitCount,
     memberLimit, 
@@ -340,6 +341,10 @@ module.exports = tobz = async (tobz, message) => {
         const StickerMetadata = { author : 'Owner? @Niskata', pack: 'Renge ~Bot' , keepScale: true }
         const reason = q ? q : 'Gada'
 	const gifxyz = { crop: false, square: 240, fps: 30, loop: 0, startTime: `00:00:00.0`, endTime: `00:00:10.0` }
+	
+	const tms = (Date.now() / 1000) - (timeStart);
+        const cts = waktu(tms)
+
 
         const vhtearkey = 'YOUR_APIKEY' // https://api.vhtear.com
         const barbarkey = 'lGjYt4zA5SQlTDx9z9Ca' // https://mhankbarbar.herokuapp.com/api
@@ -349,6 +354,18 @@ module.exports = tobz = async (tobz, message) => {
         const errorurl = 'https://steamuserimages-a.akamaihd.net/ugc/954087817129084207/5B7E46EE484181A676C02DFCAD48ECB1C74BC423/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false'
         const errorurl2 = 'https://steamuserimages-a.akamaihd.net/ugc/954087817129084207/5B7E46EE484181A676C02DFCAD48ECB1C74BC423/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false'
         // FUNCTION
+	    function waktu(seconds) {
+            seconds = Number(seconds);
+            var d = Math.floor(seconds / (3600 * 24));
+            var h = Math.floor(seconds % (3600 * 24) / 3600);
+            var m = Math.floor(seconds % 3600 / 60);
+            var s = Math.floor(seconds % 60);
+            var dDisplay = d > 0 ? d + (d == 1 ? " Hari,":" Hari,") : "";
+            var hDisplay = h > 0 ? h + (h == 1 ? " Jam,":" Jam,") : "";
+            var mDisplay = m > 0 ? m + (m == 1 ? " Menit,":" Menit,") : "";
+            var sDisplay = s > 0 ? s + (s == 1 ? " Detik,":" Detik") : "";
+            return dDisplay + hDisplay + mDisplay + sDisplay;
+        }
         const liriklagu = async (lagu) => {
             const response = await fetch(`http://scrap.terhambar.com/lirik?word=${lagu}`)
             if (!response.ok) throw new Error(`unexpected response ${response.statusText}`);
@@ -2394,7 +2411,7 @@ Menunggu video...`
             tobz.sendMessage(from,`Iya kak ada yang bisa Renge Bantu !?`, id)
         case '#menu':
         case '#help':
-            tobz.sendText(from, help)
+            tobz.sendText(from, help(cts))
             break
         case '#rengegroup':
             tobz.reply(from, `_*Maaf kak Renge belum punya grub :D*_`, id)
