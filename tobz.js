@@ -932,6 +932,13 @@ ${desc}`)
             const box = `https://akirainfo.site/box3d?apikey=e7d6410e4c5c&text=${boo}`
             await tobz.sendFileFromUrl(from, box, `BOX.jpeg`, 'Udah Jadi Kak')
             break
+	case '#summer':
+            if (args.length == 1) return tobz.reply(from, `Ketik command ${prefix}blood [text]`, id)
+            const sum = body.slice(8)
+            const summer = await axios.get(`https://xinzbot-api.herokuapp.com/api/textmaker/alam?text=${sum}&theme=summer&apikey=XinzBot`)
+            const summ = summer.data.result
+            await tobz.sendFileFromUrl(from, summ.url, `Summer.jpg`, 'Udah Jadi Kak')
+            break
         // ON OFF
         case '#nsfw':
             if (!isGroupMsg) return tobz.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
@@ -1601,9 +1608,9 @@ Menunggu video...`
             if (!isSimi) return tobz.reply(from, 'command/Perintah Simi belum di aktifkan di group ini!', id)
             if (args.length === 1) return tobz.reply(from, 'Kirim perintah *# [teks]*\nContoh : *# halo*')
             const que = body.slice(2)
-            const sigo = await axios.get(`http://simsumi.herokuapp.com/api?text=${que}&lang=id`)
-            const sigot = sigo.data
-            tobz.reply(from, sigot.success, id)
+            const sigo = await axios.get(`https://videfikri.com/api/simsimi/?teks=hai${que}`)
+            const sigot = sigo.data.result
+            tobz.reply(from, sigot.jawaban, id)
             console.log(sigot)
             break
         case '#igdl': 
