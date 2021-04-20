@@ -939,6 +939,12 @@ ${desc}`)
             const summ = summer.data.result
             await tobz.sendFileFromUrl(from, summ.url, `Summer.jpg`, 'Udah Jadi Kak')
             break
+	case '#naruto':
+            if (args.length == 1) return tobz.reply(from, `Ketik command ${prefix}naruto [text]`, id)
+            const nar = body.slice(8)
+            const naru = `https://videfikri.com/api/textmaker/narutobanner/?text=${nar}`
+            await tobz.sendFileFromUrl(from, naru, `NarutO.jpeg`, 'Udah Jadi Kak')
+            break
         // ON OFF
         case '#nsfw':
             if (!isGroupMsg) return tobz.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
