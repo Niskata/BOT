@@ -2408,7 +2408,7 @@ Menunggu video...`
             break
         // LIST MENU
 	case '#runtime':
-            tobz.reply(from, `Elaina telah aktif selama :\n${cts}`, id)
+            tobz.reply(from, `Renge telah aktif selama :\n${cts}`, id)
             break
         case '#bot':
             tobz.sendMessage(from,`Iya kak ada yang bisa Renge Bantu !?`, id)
