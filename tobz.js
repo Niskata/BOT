@@ -87,6 +87,7 @@ let pendaftar = JSON.parse(fs.readFileSync('./lib/database/user.json'))
 let stickerspam = JSON.parse(fs.readFileSync('./lib/database/stickerspam.json'))
 
 
+tobzkey = 'qNUJDjN82wbieEciNby6'
 prefix = '#'
 let { 
     limitCount,
@@ -342,7 +343,6 @@ module.exports = tobz = async (tobz, message) => {
 
         const vhtearkey = 'YOUR_APIKEY' // https://api.vhtear.com
         const barbarkey = 'lGjYt4zA5SQlTDx9z9Ca' // https://mhankbarbar.herokuapp.com/api
-        const tobzkey = 'qNUJDjN82wbieEciNby6' //https://tobz-api.herokuapp.com
         const melodickey = 'administrator'
 
         const tutor = 'https://i.ibb.co/Hp1XGbL/a4dec92b8922.jpg'
@@ -2292,6 +2292,16 @@ Menunggu video...`
                 const setstat = body.slice(11)
                 await tobz.setMyStatus(setstat)
                 tobz.sendTextWithMentions(from, `Makasih Status Barunya @${sender.id.replace('@c.us','')} 😘`)
+            break
+	case '#tobz':
+            if(!isOwner) return tobz.reply(from, `Perintah ini hanya bisa di gunakan oleh Owner Renge!`, id)
+            await tobz.reply(from, 'Key yang digunakan saat ini : '+ tobzkey, id)
+            break
+        case '#settobz':
+            if(!isOwner) return tobz.reply(from, `Perintah ini hanya bisa di gunakan oleh Owner Renge!`, id)
+            if (args.length === 1) return tobz.reply(from, `Kirim perintah *${prefix}settobz [ TOBZ KEY ]*`, id)
+            tobzkey = args[1]
+            tobz.sendText(from, `Berhasil Mengganti key Ke *「* ${tobzkey} *」*`)
             break
         case '#listgroup':
                 tobz.getAllGroups().then((res) => {
