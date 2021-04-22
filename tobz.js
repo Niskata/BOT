@@ -633,21 +633,23 @@ module.exports = tobz = async (tobz, message) => {
             break
         case '#stikernobg': 
         case '#snobg':
-			if (isMedia && type === 'image' || isQuotedImage) {
-                try {
-                    var mediaData = await decryptMedia(message, uaOverride)
-                    var imageBase64 = `data:${mimetype};base64,${mediaData.toString('base64')}`
-                    var base64img = imageBase64
-                    var outFile = './media/img/noBg.png'
-                    // untuk api key kalian bisa dapatkan pada website remove.bg
-                    var result = await removeBackgroundFromImageBase64({ base64img, apiKey: 'JGy1pCmTt5rQpyvmsUqSDW12', size: 'auto', type: 'auto', outFile })
-                    await fs.writeFile(outFile, result.base64img)
-                    await tobz.sendImageAsSticker(from, `data:${mimetype};base64,${result.base64img}`)
-                } catch(err) {
-                    console.log(err)
-                }
+  	case '#nobg':
+        if (isMedia || isQuotedImage) {
+            try {
+            var mediaData = await decryptMedia(message, uaOverride)
+            var imageBase64 = `data:${mimetype};base64,${mediaData.toString('base64')}`
+            var base64img = imageBase64
+            var outFile = './media/noBg.png'
+            // kamu dapat mengambil api key dari website remove.bg dan ubahnya difolder settings/api.json
+            var result = await removeBackgroundFromImageBase64({ base64img, apiKey: 'A41x9PH58NuMaDdN5YqMUdFh', size: 'auto', type: 'auto', outFile })
+            await fs.writeFile(outFile, result.base64img)
+            await tobz.sendImageAsSticker(from, `data:${mimetype};base64,${result.base64img}`, StickerMetadata)
+            } catch(err) {
+            console.log(err)
+               await tobz.reply(from, 'Maaf batas penggunaan hari ini sudah mencapai maksimal', id)
             }
-            break
+        }
+	break
 /*	 case prefix+'genshininfo': // chika chantexxzz
          case prefix+'genshin':
                 if (!q) return await tobz.reply(from, 'Format salah !', id)
