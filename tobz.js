@@ -1430,23 +1430,22 @@ ${desc}`)
             if (args.length == 1) return tobz.reply(from, `Untuk mencari lagu dari youtube\n\nPenggunaan: #play judul lagu`, id)
             try {
                 const serplay = body.slice(6)
-                const webplay = await fetch(`https://h4ck3rs404-api.herokuapp.com/api/ytplay?q=${serplay}&apikey=404Api`)
+                const webplay = await fetch(`https://leyscoders-api.herokuapp.com/api/playmp3?q=${serplay}&apikey=OneDayOneCharity`)
                 if (!webplay.ok) throw new Error(`Error Play : ${webplay.statusText}`)
                 const webplay2 = await webplay.json()
                  if (webplay2.status == false) {
                     tobz.reply(from, `*Maaf Terdapat kesalahan saat mengambil data, mohon pilih media lain...*`, id)
                 } else {
-                    if (Number(webplay2.result.size.split(' MB')[0]) >= 10.00) return tobz.reply(from, 'Maaf durasi music sudah melebihi batas maksimal 10 MB!', id)
-                    const { thumb, result, size, title, duration } = await webplay2.result
-                    const captplay = `*「 PLAY 」*\n\n• *Judul* : ${title}\n• *Durasi* : ${duration}\n• *Filesize* : ${size}\n\n_*Music Sedang Dikirim*_`
-                    tobz.sendFileFromUrl(from, thumb, `thumbnail.jpg`, captplay, id)
-                    await tobz.sendFileFromUrl(from, result, `${title}.mp3`, '').catch(() => tobz.reply(from, mess.error.Yt4, id))
+                    const { thumb, audio, title, duration } = await webplay2.result
+                    const captplay = `*「 PLAY 」*\n\n• *Judul* : ${title}\n• *Durasi* : ${duration}\n\n_*Music Sedang Dikirim*_`
+                    tobz.sendFileFromUrl(from, thumb, `thumbnail.jpeg`, captplay, id)
+                    await tobz.sendFileFromUrl(from, audio, `${title}.mp3`, '').catch(() => tobz.reply(from, mess.error.Yt4, id))
                 }
             } catch (err) {
                 tobz.sendText(ownerNumber, 'Error Play : '+ err)
                 tobz.reply(from, 'Jangan meminta lagu yang sama dengan sebelumnya!', id)
             }
-            break   			        
+            break   		
         case '#ytmp3':
             if (!isGroupMsg) return tobz.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
             if (isLimit(serial)) return tobz.reply(from, `Maaf ${pushname}, Kuota Limit Kamu Sudah Habis, Ketik #limit Untuk Mengecek Kuota Limit Kamu`, id)
