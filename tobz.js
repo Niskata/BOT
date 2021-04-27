@@ -1759,7 +1759,7 @@ Menunggu video...`
             console.log(sigot)
             break
         case '#igdl': 
-                if (args.length == 0) return tobz.reply(from, `Kirim perintah #ig linkig`, id)
+                if (args.length === 1) return tobz.reply(from, `Kirim perintah #igdl [ linkig ]`, id)
                 tobz.reply(from, '_Scrapping Metadataa..._', id)
                 axios.get(`https://api.zeks.xyz/api/ig?url=${body.slice(5)}&apikey=apivinz`)
 			    .then(async(res) => {
