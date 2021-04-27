@@ -1175,32 +1175,32 @@ ${desc}`)
             break
 	case '#ahego':
             if (!isGroupMsg) return tobz.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
-            tobz.sendFileFromUrl(from, `https://zenz.herokuapp.com/api/random/ahegao?apikey=zenz`, 'LEWD.jpeg', '[ H3H3H3 BOII ]')
+            tobz.sendFileFromUrl(from, `https://https://zenzapi.xyz/api/random/ahegao?apikey=zenz`, 'LEWD.jpeg', '[ H3H3H3 BOII ]')
             break
         case '#lewd':
             if (!isGroupMsg) return tobz.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
-            tobz.sendFileFromUrl(from, `https://zenz.herokuapp.com/api/random/lewd?apikey=zenz`, 'LEWD.jpeg', '[ LEWD ]')
+            tobz.sendFileFromUrl(from, `https://zenzapi.xyz/api/random/lewd?apikey=zenz`, 'LEWD.jpeg', '[ LEWD ]')
             break
         case '#hentaiass':
             if (!isNsfw) return tobz.reply(from, 'command/Perintah NSFW belum di aktifkan di group ini!', id)
             if (!isGroupMsg) return tobz.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
-            tobz.sendFileFromUrl(from, `https://zenz.herokuapp.com/api/random/hentaiass?apikey=zenz`, 'HENTAIass.jpeg', '[ HENTAI ASS ]')
+            tobz.sendFileFromUrl(from, `https://zenzapi.xyz/api/random/hentaiass?apikey=zenz`, 'HENTAIass.jpeg', '[ HENTAI ASS ]')
             break
         case '#yaoi':
             if (!isGroupMsg) return tobz.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
-            tobz.sendFileFromUrl(from, `https://zenz.herokuapp.com/api/random/yaoi2?apikey=zenz`, 'YaoI.jpeg', '[ YAOINYA NUMPANG LEWAT OM ]')
+            tobz.sendFileFromUrl(from, `https://zenzapi.xyz/api/random/yaoi2?apikey=zenz`, 'YaoI.jpeg', '[ YAOINYA NUMPANG LEWAT OM ]')
             break
         case '#loli':
             if (!isGroupMsg) return tobz.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
-            tobz.sendFileFromUrl(from, `https://zenz.herokuapp.com/api/random/loli?apikey=zenz`, 'loli.jpeg', '[ LOLINYA NUMPANG LEWAT OM ]')
+            tobz.sendFileFromUrl(from, `https://zenzapi.xyz/api/random/loli?apikey=zenz`, 'loli.jpeg', '[ LOLINYA NUMPANG LEWAT OM ]')
             break
         case '#milf':
             if (!isGroupMsg) return tobz.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
-            tobz.sendFileFromUrl(from, `https://zenz.herokuapp.com/api/random/milf?apikey=zenz`, 'milf.jpeg', '[ MILFNYA NUMPANG LEWAT OM ]')
+            tobz.sendFileFromUrl(from, `https://zenzapi.xyz/api/random/milf?apikey=zenz`, 'milf.jpeg', '[ MILFNYA NUMPANG LEWAT OM ]')
             break
         case '#yuri':
             if (!isGroupMsg) return tobz.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
-            tobz.sendFileFromUrl(from, `https://zenz.herokuapp.com/api/random/yuri?apikey=zenz`, 'YURi.jpeg', '[ YURINYA NUMPANG LEWAT OM ]')
+            tobz.sendFileFromUrl(from, `https://zenzapi.xyz/api/random/yuri?apikey=zenz`, 'YURi.jpeg', '[ YURINYA NUMPANG LEWAT OM ]')
             break
         case '#shota':
             if (!isGroupMsg) return tobz.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
