@@ -142,6 +142,7 @@ module.exports = tobz = async (tobz, message) => {
         let { pushname, verifiedName } = sender
         pushname = pushname || verifiedName
         const commands = caption || body || ''
+	const chats = (type === 'chat') ? body : (type === 'image' || type === 'video')
         const command = commands.toLowerCase().split(' ')[0] || ''
         const args =  commands.split(' ')
 
@@ -287,6 +288,249 @@ module.exports = tobz = async (tobz, message) => {
             '10%',
             '5%'
             ]
+
+    // Chats
+    if (chats == 'Assalamualaikum'){
+        tobz.reply(from, `Waalaikumsalam wr wb.\nSilahkan ketik ${prefix}help untuk menampilkan menu`, id)
+    }
+    if (chats == 'assalamualaikum'){
+        tobz.reply(from, `Waalaikumsalam wr wb.\nSilahkan ketik ${prefix}help untuk menampilkan menu`, id)
+    }
+    if (chats == 'P'){
+        tobz.sendPtt(from, './media/nani-kore.mp3', id)
+        sleep(1000)
+        tobz.reply(from, `Silahkan ketik ${prefix}help untuk menampilkan menu`, id)
+    }
+    if (chats == 'p'){
+        tobz.sendPtt(from, './media/nani-kore.mp3', id)
+        sleep(1000)
+        tobz.reply(from, `Silahkan ketik ${prefix}help untuk menampilkan menu`, id)
+    }
+    if (chats == 'Bot'){
+        tobz.sendPtt(from, './media/nani-kore.mp3', id)
+        sleep(1000)
+        tobz.reply(from, `Silahkan ketik ${prefix}help untuk menampilkan menu`, id)
+    }
+    if (chats == 'bot'){
+        tobz.sendPtt(from, './media/nani-kore.mp3', id)
+        sleep(1000)
+        tobz.reply(from, `Silahkan ketik ${prefix}help untuk menampilkan menu`, id)
+    }
+    if (chats == 'kontol'){
+        tobz.sendPtt(from, './media/astg.mp3', id)
+    }
+    if (chats == 'Kontol') {
+        tobz.sendPtt(from, './media/astg.mp3', id)
+    }
+    if (chats == 'song') {
+        tobz.sendPtt(from, './media/song.mp3', id)
+    }
+    if (chats == 'kntl') {
+        tobz.sendPtt(from, './media/astg.mp3', id)
+    }
+    if (chats == 'ajg'){
+        tobz.sendPtt(from, './media/astg.mp3', id)
+    }
+    if (chats == 'Ajg'){
+        tobz.sendPtt(from, './media/astg.mp3', id)
+    }
+    if (chats == 'AJG'){
+        tobz.sendPtt(from, './media/astg.mp3', id)
+    }
+    if (chats == 'pepek'){
+        tobz.sendPtt(from, './media/astg.mp3', id)
+    }
+    if (chats == 'Pepek'){
+        tobz.sendPtt(from, './media/astg.mp3', id)
+    }
+    if (chats == 'Ppq'){
+        tobz.sendPtt(from, './media/astg.mp3', id)
+    }
+    if (chats == 'PPQ'){
+        tobz.sendPtt(from, './media/astg.mp3', id)
+    }
+    if (chats == 'ngentot'){
+        tobz.sendPtt(from, './media/astg.mp3', id)
+    }
+    if (chats == 'Ngentot'){
+        tobz.sendPtt(from, './media.astg.mp3', id)
+    }
+    if (chats == 'Anjg'){
+        tobz.sendPtt(from, './media/astg.mp3', id)
+    }
+    if (chats == 'anjg'){
+        tobz.sendPtt(from, './media/astg.mp3', id)
+    }
+    if (chats == 'anjing'){
+        tobz.sendPtt(from, './media/astg.mp3', id)
+    }
+    if (chats == 'Anjing'){
+        tobz.sendPtt(from, './media/astg.mp3', id)
+    }
+    if (chats == 'Hi'){
+        tobz.sendPtt(from, './media/nani_.mp3', id)
+        sleep(1000)
+        tobz.reply(from, `Silahkan ketik ${prefix}help untuk menampilkan menu`, id)
+    }
+    if (chats == 'hi'){
+        tobz.sendPtt(from, './media/nani_.mp3', id)
+        sleep(1000)
+        tobz.reply(from, `Silahkan ketik ${prefix}help untuk menampilkan menu`, id)
+    }
+    if (chats == 'Hai'){
+        tobz.sendPtt(from, './media/nani_.mp3', id)
+      sleep(1000)
+      tobz.reply(from, `Silahkan ketik ${prefix}help untuk menampilkan menu`, id)
+    }
+    if (chats == 'hai'){
+        tobz.sendPtt(from, './media/nani_.mp3', id)
+      sleep(1000)
+      tobz.reply(from, `Silahkan ketik ${prefix}help untuk menampilkan menu`, id)
+    }
+    if (chats == 'Hei'){
+        tobz.sendPtt(from, './media/nani_.mp3', id)
+      sleep(1000)
+      tobz.reply(from, `Silahkan ketik ${prefix}help untuk menampilkan menu`, id)
+    }
+    if (chats == 'hei'){
+        tobz.sendPtt(from, './media/nani_.mp3', id)
+      sleep(1000)
+      tobz.reply(from, `Silahkan ketik ${prefix}help untuk menampilkan menu`, id)
+    }
+    if (chats == 'Halo'){
+        tobz.sendPtt(from, './media/nani_.mp3', id)
+        sleep(1000)
+        tobz.reply(from, `Silahkan ketik ${prefix}help untuk menampilkan menu`, id)
+    }
+    if (chats == 'halo'){
+        tobz.sendPtt(from, './media/nani_.mp3', id)
+        sleep(1000)
+        tobz.reply(from, `Silahkan ketik ${prefix}help untuk menampilkan menu`, id)
+    }
+    if (chats == 'Hallo'){
+        tobz.sendPtt(from, './media/nani_.mp3', id)
+      sleep(1000)
+      tobz.reply(from, `Silahkan ketik ${prefix}help untuk menampilkan menu`, id)
+    }
+    if (chats == 'hallo'){
+        tobz.sendPtt(from, './media/nani_.mp3', id)
+      sleep(1000)
+      tobz.reply(from, `Silahkan ketik ${prefix}help untuk menampilkan menu`, id)
+    }
+    if (chats == 'Hello'){
+        tobz.sendPtt(from, './media/nani_.mp3', id)
+      sleep(1000)
+      tobz.reply(from, `Silahkan ketik ${prefix}help untuk menampilkan menu`, id)
+    }
+    if (chats == 'hello'){
+        tobz.sendPtt(from, './media/nani_.mp3', id)
+      sleep(1000)
+      tobz.reply(from, `Silahkan ketik ${prefix}help untuk menampilkan menu`, id)
+    }
+    if (chats == 'woi'){
+        tobz.sendPtt(from, './media/nani-kore.mp3', id)
+        tobz.reply(from, `Silahkan ketik ${prefix}help untuk menampilkan menu`, id)
+    }
+    if (chats == 'Woi'){
+        tobz.sendPtt(from, './media/nani-kore.mp3', id)
+        tobz.reply(from, `Silahkan ketik ${prefix}help untuk menampilkan menu`, id)
+    }
+    if (chats == 'Asu'){
+        tobz.sendPtt(from, './media/astg.mp3', id)
+    }
+    if (chats == 'asu'){
+        tobz.sendPtt(from, './media/astg.mp3', id)
+    }
+    if (chats == 'Asw'){
+        tobz.sendPtt(from, './media/astg.mp3', id)
+    }
+    if (chats == 'asw'){
+        tobz.sendPtt(from, './media/astg.mp3', id)
+    }
+    if (chats == 'Gblk'){
+        tobz.sendPtt(from, './media/bakaa.mp3', id)
+    }
+    if (chats == 'gblk'){
+        tobz.sendPtt(from, './media/bakaa.mp3', id)
+    }
+    if (chats == 'Goblok'){
+        tobz.sendPtt(from, './media/bakaa.mp3', id)
+    }
+    if (chats == 'goblok'){
+        tobz.sendPtt(from, './media/bakaa.mp3', id)
+    }
+    if (chats == 'Gblg'){
+        tobz.sendPtt(from, './media/bakaa.mp3', id)
+    }
+    if (chats == 'gblg'){
+        tobz.sendPtt(from, './media/bakaa.mp3', id)
+    }
+    if (chats == 'bego'){
+        tobz.sendPtt(from, './media/bakaa.mp3', id)
+    }
+    if (chats == 'Bego'){
+        tobz.sendPtt(from, './media/bakaa.mp3', id)
+    }
+    if (chats == 'Tolol'){
+      tobz.sendPtt(from, './media/bakaa.mp3', id)
+    }
+    if (chats == 'tolol'){
+      tobz.sendPtt(from, './media/bakaa.mp3', id)
+    }
+    if (chats == 'bodo'){
+      tobz.sendPtt(from, './media/bakaa.mp3', id)
+    }
+    if (chats == 'Bodo'){
+      tobz.sendPtt(from, './media/bakaa.mp3', id)
+    }
+    if (chats == 'bodoh'){
+      tobz.sendPtt(from, './media/bakaa.mp3', id)
+    }
+    if (chats == 'Bodoh'){
+      tobz.sendPtt(from, './media/bakaa.mp3', id)
+    }
+    if (chats == 'Terimakasih'){
+      tobz.sendText(from, 'Sama - Sama hehe..', id)
+    }
+    if (chats == 'terimakasih'){
+      tobz.sendText(from, 'Sama - Sama hehe..', id)
+    }
+    if (chats == 'Terimakasi'){
+      tobz.sendText(from, 'Sama - Sama hehe..', id)
+    }
+    if (chats == 'terimakasi'){
+      tobz.sendText(from, 'Sama - Sama hehe..', id)
+    }
+    if (chats == 'Makasih'){
+      tobz.sendText(from, 'Sama - Sama hehe..', id)
+    }
+    if (chats == 'makasih'){
+      tobz.sendText(from, 'Sama - Sama hehe..', id)
+    }
+    if (chats == 'Makasi'){
+      tobz.sendText(from, 'Sama - Sama hehe..', id)
+    }
+    if (chats == 'makasi'){
+      tobz.sendText(from, 'Sama - Sama hehe..', id)
+    }
+    if (chats == 'Mksih'){
+      tobz.sendText(from, 'Sama - Sama hehe..', id)
+    }
+    if (chats == 'mksih'){
+      tobz.sendText(from, 'Sama - Sama hehe..', id)
+    }
+    if (chats == 'Mksi'){
+      tobz.sendText(from, 'Sama - Sama hehe..', id)
+    }
+    if (chats == 'mksi'){
+      tobz.sendText(from, 'Sama - Sama hehe..', id)
+    }
+    if (chats == 'Mksh'){
+      tobz.sendText(from, 'Sama - Sama hehe..', id)
+    }
+    if (chats == 'mksh'){
+      tobz.sendText(from, 'Sama - Sama hehe..', id)
+    }
 
         const mess = {
             wait: '[ WAIT ] Sedang di proses⏳ silahkan tunggu sebentar',
