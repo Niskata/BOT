@@ -1828,17 +1828,13 @@ ${desc}`)
             if (!isLin) return tobz.reply(from, mess.error.Iv, id)
             try {
                 tobz.reply(from, mess.wait, id)
-                const ytvh = await fetch(`https://tobz-api.herokuapp.com/api/ytv?url=${args[1]}&apikey=` + tobzkey)
-                if (!ytvh.ok) throw new Error(`Error YTMP4 : ${ytvh.statusText}`)
-                const ytvh2 = await ytvh.json()
-                 if (ytvh2.status == false) {
+                const ytvh = await axios.get(`https://flinsky.herokuapp.com/api/yutub/video?url=${args[1]}&apikey=reyanjay`)
+                 if (ytvh.status == false) {
                     tobz.reply(from, `*Maaf Terdapat kesalahan saat mengambil data, mohon pilih media lain...*`, id)
                 } else {
-                    const { title, UrlVideo, thumb, size, status, ext } = await ytvh.data.result
-                    console.log(`VHTEAR : ${ext}\n${size}\n${status}`)
-                    tobz.sendFileFromUrl(from, thumb, 'thumb.jpg', `*「 YOUTUBE MP4 」*\n\n• *Judul* : ${title}\n• *Filesize* : ${size}\n\n*Link* : ${UrlVideo}`, id)
-                    await tobz.sendFileFromUrl(from, '', id).catch(() => tobz.reply(from, mess.error.Yt4, id))
-                    await limitAdd(serial)
+                    const { ext, filesize, result, status, thumb, title } = await ytvh.data.result
+                    console.log(`VHTEAR : ${ext}\n${filesize}\n${status}`)
+                    await tobz.sendFileFromUrl(from, thumb, 'thumb.jpg', `*「 YOUTUBE MP4 」*\n\n• *Judul* : ${title}\n• *Filesize* : ${filesize}\n\n*Link* : ${result} \n\nUntuk Mengurangi lag jadi silahkan download melalui link diatas `, id)
                 }
             } catch (err) {
                 tobz.sendText(ownerNumber, 'Error ytmp4 : '+ err)
