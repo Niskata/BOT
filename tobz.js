@@ -1833,7 +1833,7 @@ ${desc}`)
                     tobz.reply(from, `*Maaf Terdapat kesalahan saat mengambil data, mohon pilih media lain...*`, id)
                 } else {
                     const { ext, filesize, result, status, thumb, title } = await ytvh.data.result
-                    console.log(`VHTEAR : ${ext}\n${filesize}\n${status}`)
+                    console.log(`Flinsky : ${ext}\n${filesize}\n${status}`)
                     await tobz.sendFileFromUrl(from, thumb, 'thumb.jpg', `*「 YOUTUBE MP4 」*\n\n• *Judul* : ${title}\n• *Filesize* : ${filesize}\n\n*Link* : ${result} \n\nUntuk Mengurangi lag jadi silahkan download melalui link diatas `, id)
                 }
             } catch (err) {
