@@ -2794,9 +2794,6 @@ Menunggu video...`
         case '#kerangmenu':
             tobz.sendText(from, kerangcmd)
             break
-        case '#mediamenu':
-            tobz.sendText(from, downloadcmd)
-            break
         case '#othermenu':
             tobz.sendText(from, othercmd)
             break
