@@ -1711,6 +1711,11 @@ ${desc}`)
            }
           break
         // MEDIA //
+	case '#asupan2':
+            if (!isGroupMsg) return tobz.reply(from, 'Perintah ini hanya bisa dijalankan didalam grup!', id)
+            await tobz.reply(from, 'Matte nee onii-sama', id)
+            await tobz.sendFileFromUrl(from, `https://api-yogipw.herokuapp.com/api/asupan?apikey=yogipw`, `Asupan.mp4`, 'CAKEP YA KAK :3')
+            break
 	case '#asupan':
             if (!isGroupMsg) return tobz.reply(from, 'Perintah ini hanya bisa dijalankan didalam grup!', id)
             await tobz.reply(from, 'Matte nee onii-sama', id)
