@@ -900,7 +900,7 @@ module.exports = tobz = async (tobz, message) => {
             if (args[1] === 'ningguang') {
                await tobz.sendFileFromUrl(from, `https://pbs.twimg.com/media/Em-fPLbXIAMeGHs.jpg`, 'ningguang.jpg', 'NINGGUANG')
             }
-	    else if (args{1} === 'yanfei') {
+	    else if (args[1] === 'yanfei') {
 		await tobz.sendFileFromUrl(from, `https://upload-os-bbs.mihoyo.com/upload/2021/05/01/84922294/caa74928e6d6999b378a803c70557ed2_5723282131952359433.png`, 'yanfei.png', 'YANFEI')
 	    }
 	    else if (args[1] === 'qiqi') {
