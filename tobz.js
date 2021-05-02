@@ -2275,22 +2275,29 @@ Menunggu video...`
             tobz.reply(from, lirik, id)
             break
         case '#igstalk':
+        if (!isGroupMsg) return tobz.reply(from, 'Perintah ini sedang dalam perbaikan!', id)    
         if (args.length === 1)  return tobz.reply(from, 'Kirim perintah *#igstalk @username*\nContoh *#igstalk duar_amjay*', id)
-        const igst = body.slice(9)
-        const istalk2 = await axios.get(`https://h4ck3rs404-api.herokuapp.com/api/igstalk?usrnm=${igst}&apikey=404Api`)
-        const { full_name, is_private, profile_pic_url,media_count, follower_count, following_count, biography } = istalk2.data.result
-    const istalk3 = `*「 INSTAGRAM PROFILE 」*
-• *Username:* @${igst}
-• *Nama:* ${full_name}
-• *Deskripsi:* ${biography}
-• *Pengikut:* ${follower_count}
-• *Mengikuti*: ${following_count}
-• *Jumlah Postingan:* ${media_count}
-• *Private:* ${is_private}
-• *Link:* https://instagram.com/${igst}`
-        
-        tobz.sendImage(from, profile_pic_url, `PROFILIG.jpeg`, istalk3)
-      break
+        try {
+            const stalk = body.slice(9)
+            const igst = await axios.get(`https://flinsky.herokuapp.com/api/ig/stalk?username=${stalk}&apikey=reyanjay`)
+             if (igst.status == false) {
+                tobz.reply(from, `*Maaf Terdapat kesalahan saat mengambil data, mohon cari username lain!*`, id)
+            } else {
+                const { Biodata, Jumlah_Followers, Jumlah_Following, Jumlah_Post, Name, Profile_pic, status } = await igst.data.result
+                console.log(`IGSTALK : ${status}`)
+                await tobz.sendFileFromUrl(from, Profile_pic, 'PPIG.jpg', `*「 INSTAGRAM STALK 」*\n\n• *Username:* @${stalk}
+• *Nama:* ${Name}
+• *Deskripsi:* ${Biodata}
+• *Pengikut:* ${Jumlah_Followers}
+• *Mengikuti*: ${Jumlah_Following}
+• *Jumlah Postingan:* ${Jumlah_Post}
+• *Link:* https://instagram.com/${stalk}`, id)
+            }
+        } catch (err) {
+            tobz.sendText(ownerNumber, 'Error IGstalk : '+ err)
+            tobz.reply(from, 'Maaf Terjadi Kesalahan!', id)
+        }
+        break
         // ADMIN & OWNER
         case '#bc':
             if (!isOwner) return tobz.reply(from, 'Perintah ini hanya untuk Owner Renge!', id)
