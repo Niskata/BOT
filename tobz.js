@@ -885,7 +885,7 @@ module.exports = tobz = async (tobz, message) => {
             var base64img = imageBase64
             var outFile = './media/noBg.png'
             // kamu dapat mengambil api key dari website remove.bg dan ubahnya difolder settings/api.json
-            var result = await removeBackgroundFromImageBase64({ base64img, apiKey: 'A41x9PH58NuMaDdN5YqMUdFh', size: 'auto', type: 'auto', outFile })
+            var result = await removeBackgroundFromImageBase64({ base64img, apiKey: 'bpeErQXdDJgXncwTNAF8nZiJ', size: 'auto', type: 'auto', outFile })
             await fs.writeFile(outFile, result.base64img)
             await tobz.sendImageAsSticker(from, `data:${mimetype};base64,${result.base64img}`, StickerMetadata)
             } catch(err) {
