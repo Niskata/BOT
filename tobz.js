@@ -2275,35 +2275,21 @@ Menunggu video...`
             tobz.reply(from, lirik, id)
             break
         case '#igstalk':
-        if (!isOwner) return tobz.reply(from, 'Perintah ini sedang dalam perbaikan!', id)    
         if (args.length === 1)  return tobz.reply(from, 'Kirim perintah *#igstalk @username*\nContoh *#igstalk duar_amjay*', id)
-        argz = body.trim().split(' ')
-        console.log(...argz[1])
-        var slicedArgs = Array.prototype.slice.call(argz, 1);
-        console.log(slicedArgs)
-        const istalk = await slicedArgs.join(' ')
-        console.log(istalk)
-        try {
-        const istalk2 = await axios.get('http://api-melodicxt-2.herokuapp.com/api/igprofile?user=' + istalk + '&apikey=' + melodickey)
-        const { username, biography, following_count, follower_count, full_name, profile_pic_url, media_count, is_private } = istalk2.data.result
+        const igst = body.slice(9)
+        const istalk2 = await axios.get(`https://h4ck3rs404-api.herokuapp.com/api/igstalk?usrnm=${igst}&apikey=404Api`)
+        const { full_name, is_private, profile_pic_url,media_count, follower_count, following_count, biography } = istalk2.data.result
     const istalk3 = `*「 INSTAGRAM PROFILE 」*
-• *Username:* @${username}
+• *Username:* @${igst}
 • *Nama:* ${full_name}
 • *Deskripsi:* ${biography}
 • *Pengikut:* ${follower_count}
 • *Mengikuti*: ${following_count}
 • *Jumlah Postingan:* ${media_count}
 • *Private:* ${is_private}
-• *Link:* https://instagram.com/${username}`
+• *Link:* https://instagram.com/${igst}`
         
-        const pictk = await bent("buffer")(profile_pic_url)
-        const base64 = `data:image/jpg;base64,${pictk.toString("base64")}`
-        tobz.sendImage(from, base64, username, istalk3)
-        } catch (err) {
-         console.error(err.message)
-         await tobz.sendFileFromUrl(from, errorurl2, 'error.png', '💔️ Maaf, User tidak ditemukan')
-         tobz.sendText(ownerNumber, 'Igstalk Error : ' + err)
-       }
+        tobz.sendImage(from, profile_pic_url, `PROFILIG.jpeg`, istalk3)
       break
         // ADMIN & OWNER
         case '#bc':
