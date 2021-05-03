@@ -1783,18 +1783,17 @@ ${desc}`)
                 const webplay2 = await webplay.json()
                  if (webplay2.status == false) {
                     tobz.reply(from, `*Maaf Terdapat kesalahan saat mengambil data, mohon pilih media lain...*`, id)
-                } else {
-                    const { thumbnail, url, title, duration, size, description } = await webplay2.result.result
-                    const captplay = `*「 PLAY 」*\n\n• *Judul* : ${title}\n• *Durasi* : ${duration}\n• *Size* : ${size}\n• *Deskripsi* : ${description}\n\n_*Music Sedang Dikirim*_`
-                    tobz.sendFileFromUrl(from, thumbnail, `thumbnail.jpeg`, captplay, id)
-                    await tobz.sendFileFromUrl(from, url, `${title}.mp3`, '').catch(() => tobz.reply(from, mess.error.Yt4, id))
-                    console.log(color(`Audio processed for ${processTime(t, moment())} seconds`, 'aqua'))
+                    } else {
+                        const { thumbnail, url, title, duration, size } = await webplay2.result.result
+                        const captplay = `*「 PLAY 」*\n\n• *Judul* : ${title}\n• *Durasi* : ${duration}\n• *Size* : ${size}\n• *Link* : ${url}\n\n_*Download Sendiri ya bund soalnya lagi eror*_`
+                        tobz.sendFileFromUrl(from, thumbnail, `thumbnail.jpeg`, captplay, id)
+                        console.log(color(`Audio processed for ${processTime(t, moment())} seconds`, 'aqua'))
+                    }
+                } catch (err) {
+                    tobz.sendText(ownerNumber, 'Error Play : '+ err)
+                    tobz.reply(from, 'Jangan meminta lagu yang sama dengan sebelumnya!', id)
                 }
-            } catch (err) {
-                tobz.sendText(ownerNumber, 'Error Play : '+ err)
-                tobz.reply(from, 'Jangan meminta lagu yang sama dengan sebelumnya!', id)
-            }
-            break  		
+                break 
         case '#ytmp3':
             if (!isGroupMsg) return tobz.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
             if (isLimit(serial)) return tobz.reply(from, `Maaf ${pushname}, Kuota Limit Kamu Sudah Habis, Ketik #limit Untuk Mengecek Kuota Limit Kamu`, id)
