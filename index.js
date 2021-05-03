@@ -11,7 +11,9 @@ const options = require('./options')
 // THX FOR NURUTOMO
 // Cache handler and check for file change
 require('./tobz.js')
+require('./lib/help.js')
 nocache('./tobz.js', module => console.log(`'${module}' Updated!`))
+nocache('./lib/help.js', module => console.log(`'${module}' Updated!`))
 
 const adminNumber = JSON.parse(fs.readFileSync('./lib/admin.json'))
 const setting = JSON.parse(fs.readFileSync('./lib/setting.json'))
