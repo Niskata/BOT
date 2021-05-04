@@ -1777,23 +1777,22 @@ ${desc}`)
             if (!isGroupMsg) return tobz.reply(from, `Maaf command ini hanya bisa digunakan di dalam grup!`, id)
             if (args.length == 1) return tobz.reply(from, `Untuk mencari lagu dari youtube\n\nPenggunaan: #play judul lagu`, id)
             try {
-                const serplay = body.slice(6)
-                const webplay = await fetch(`https://flinsky.herokuapp.com/api/yutub/play?q=${serplay}&apikey=reyanjay`)
+                const serp = body.slice(6)
+                const webplay = await fetch(`https://api-yogipw.herokuapp.com/api/yt/playmp3?query=${serp}&apikey=yogipw`)
                 if (!webplay.ok) throw new Error(`Error Play : ${webplay.statusText}`)
-                const webplay2 = await webplay.json()
-                 if (webplay2.status == false) {
+                const webplay1 = await webplay.json()
+                 if (webplay1.status == false) {
                     tobz.reply(from, `*Maaf Terdapat kesalahan saat mengambil data, mohon pilih media lain...*`, id)
-                    } else {
-                        const { thumbnail, url, title, duration, size } = await webplay2.result.result
-                        const captplay = `*「 PLAY 」*\n\n• *Judul* : ${title}\n• *Durasi* : ${duration}\n• *Size* : ${size}\n• *Link* : ${url}\n\n_*Download Sendiri ya bund soalnya lagi eror*_`
-                        tobz.sendFileFromUrl(from, thumbnail, `thumbnail.jpeg`, captplay, id)
-                        console.log(color(`Audio processed for ${processTime(t, moment())} seconds`, 'aqua'))
-                    }
-                } catch (err) {
-                    tobz.sendText(ownerNumber, 'Error Play : '+ err)
-                    tobz.reply(from, 'Jangan meminta lagu yang sama dengan sebelumnya!', id)
+                } else {
+                    tobz.reply(from, mess.wait, id)
+                    await tobz.sendFileFromUrl(from, webplay1.url, `${webplay1.title}.mp3`, '')
+                    console.log(color(`Audio processed for ${processTime(t, moment())} seconds`, 'aqua'))
                 }
-                break 
+            } catch (err) {
+                tobz.sendText(ownerNumber, 'Error Play : '+ err)
+                tobz.reply(from, 'Jangan meminta lagu yang sama dengan sebelumnya!', id)
+            }
+            break 	         
         case '#ytmp3':
             if (!isGroupMsg) return tobz.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
             if (isLimit(serial)) return tobz.reply(from, `Maaf ${pushname}, Kuota Limit Kamu Sudah Habis, Ketik #limit Untuk Mengecek Kuota Limit Kamu`, id)
