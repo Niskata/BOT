@@ -1778,7 +1778,7 @@ ${desc}`)
             if (args.length == 1) return tobz.reply(from, `Untuk mencari lagu dari youtube\n\nPenggunaan: #play judul lagu`, id)
             try {
                 const serp = body.slice(6)
-                const webplay = await fetch(`https://api.zeks.xyz/api/ytplaymp4?apikey=nishikata&q=${serp}`)
+                const webplay = await fetch(`https://api.zeks.xyz/api/ytplaymp3?apikey=nishikata&q=${serp}`)
                 if (!webplay.ok) throw new Error(`Error Play : ${webplay.statusText}`)
                 const webplay1 = await webplay.json()
                  if (webplay1.status == false) {
