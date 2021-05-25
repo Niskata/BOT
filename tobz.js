@@ -1251,7 +1251,7 @@ ${desc}`)
             break
         case '#hartatahta':
             const harta1 = body.slice(12)
-            const harta = `https://api.zeks.xyz/api/hartatahta?text=${harta1}&apikey=apivinz`
+            const harta = `https://api.zeks.xyz/api/hartatahta?text=${harta1}&apikey=nishikata`
             await tobz.sendFileFromUrl(from, harta, 'HartaTahta.jepg', 'udah jadi kak')
             break
         case '#snow':
@@ -1720,7 +1720,7 @@ ${desc}`)
             if (args.length === 1) return tobz.reply(from, 'Kirim perintah *#nulis [teks]*', id)
             const nulis = encodeURIComponent(body.slice(7))
             tobz.reply(from, mess.wait, id)
-            const urlnulis = `https://api.zeks.xyz/api/nulis?text=${nulis}&apikey=apivinz`
+            const urlnulis = `https://api.zeks.xyz/api/nulis?text=${nulis}&apikey=nishikata`
             await tobz.sendFileFromUrl(from, urlnulis, 'Nulis.jpeg', 'Nih anjim')
             break
         case '#shorturl':
@@ -1773,26 +1773,27 @@ ${desc}`)
         await tobz.reply(from, mess.wait, id)
         return tobz.sendFileFromUrl(from, `https://zenzapi.xyz/api/jooxplay?search=${lagunyabang}&apikey=zenz`, `${lagunyabang}.MP3`, ' ')
         break 
-	case '#play':
-            if (!isGroupMsg) return tobz.reply(from, `Maaf command ini hanya bisa digunakan di dalam grup!`, id)
+    case '#play':
+        if (!isOwner) return tobz.reply(from, `Maaf command ini hanya bisa digunakan di dalam grup!`, id)
             if (args.length == 1) return tobz.reply(from, `Untuk mencari lagu dari youtube\n\nPenggunaan: #play judul lagu`, id)
             try {
                 const serp = body.slice(6)
-                const webplay = await fetch(`https://api-yogipw.herokuapp.com/api/yt/playmp3?query=${serp}&apikey=yogipw`)
+                const webplay = await fetch(`https://api.zeks.xyz/api/ytplaymp4?apikey=nishikata&q=${serp}`)
                 if (!webplay.ok) throw new Error(`Error Play : ${webplay.statusText}`)
                 const webplay1 = await webplay.json()
                  if (webplay1.status == false) {
                     tobz.reply(from, `*Maaf Terdapat kesalahan saat mengambil data, mohon pilih media lain...*`, id)
                 } else {
+                    const { url_video, title} = await webplay1.result
                     tobz.reply(from, mess.wait, id)
-                    await tobz.sendFileFromUrl(from, webplay1.url, `${webplay1.title}.mp3`, '')
+                    await tobz.sendFileFromUrl(from, url_video, `${title}.mp3` , '')
                     console.log(color(`Audio processed for ${processTime(t, moment())} seconds`, 'aqua'))
                 }
             } catch (err) {
                 tobz.sendText(ownerNumber, 'Error Play : '+ err)
                 tobz.reply(from, 'Jangan meminta lagu yang sama dengan sebelumnya!', id)
             }
-            break 	         
+            break 	          
         case '#ytmp3':
             if (!isGroupMsg) return tobz.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
             if (isLimit(serial)) return tobz.reply(from, `Maaf ${pushname}, Kuota Limit Kamu Sudah Habis, Ketik #limit Untuk Mengecek Kuota Limit Kamu`, id)
@@ -2008,7 +2009,7 @@ Menunggu video...`
         case '#igdl': 
                 if (args.length === 1) return tobz.reply(from, `Kirim perintah #igdl [ linkig ]`, id)
                 tobz.reply(from, '_Scrapping Metadataa..._', id)
-                axios.get(`https://api.zeks.xyz/api/ig?url=${body.slice(5)}&apikey=apivinz`)
+                axios.get(`https://api.zeks.xyz/api/ig?url=${body.slice(5)}&apikey=nishikata`)
 			    .then(async(res) => {
                     if (res.data.result.includes('.mp4')) {
                         var ext = '.mp4'
