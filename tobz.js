@@ -1784,9 +1784,9 @@ ${desc}`)
                  if (webplay1.status == false) {
                     tobz.reply(from, `*Maaf Terdapat kesalahan saat mengambil data, mohon pilih media lain...*`, id)
                 } else {
-                    const { url_video, title} = await webplay1.result
+                    const { url_audio, title} = await webplay1.result
                     tobz.reply(from, mess.wait, id)
-                    await tobz.sendFileFromUrl(from, url_video, `${title}.mp3` , '')
+                    await tobz.sendFileFromUrl(from, url_audio, `${title}.mp3` , '')
                     console.log(color(`Audio processed for ${processTime(t, moment())} seconds`, 'aqua'))
                 }
             } catch (err) {
