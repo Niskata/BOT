@@ -1773,6 +1773,13 @@ ${desc}`)
             const logs  = call2.data.result
                 await tobz.sendText(from, logs, id)
             break
+    case '#joox':
+       if (!isGroupMsg) return tobz.reply(from, `Maaf command ini hanya bisa digunakan di dalam grup!`, id)
+       if (args.length == 1) return tobz.reply(from, `Untuk mencari lagu dari Joox\n\nPenggunaan: #joox judul lagu`, id)
+        const lagunyabang = body.slice(6)
+        await tobz.reply(from, mess.wait, id)
+        return tobz.sendFileFromUrl(from, `https://zenzapi.xyz/api/jooxplay?search=${lagunyabang}&apikey=zenz`, `${lagunyabang}.MP3`, ' ')
+        break 
 	case '#play':
             if (!isGroupMsg) return tobz.reply(from, `Maaf command ini hanya bisa digunakan di dalam grup!`, id)
             if (args.length == 1) return tobz.reply(from, `Untuk mencari lagu dari youtube\n\nPenggunaan: #play judul lagu`, id)
