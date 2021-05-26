@@ -1835,13 +1835,13 @@ ${desc}`)
             if (!isLin) return tobz.reply(from, mess.error.Iv, id)
             try {
                 tobz.reply(from, mess.wait, id)
-                const ytvh = await axios.get(`https://flinsky.herokuapp.com/api/yutub/video?url=${args[1]}&apikey=reyanjay`)
+                const ytvh = await axios.get(`https://h4ck3rs404-api.herokuapp.com/api/ytmp4?url=${args[1]}&apikey=404Api`)
                  if (ytvh.status == false) {
                     tobz.reply(from, `*Maaf Terdapat kesalahan saat mengambil data, mohon pilih media lain...*`, id)
                 } else {
-                    const { ext, filesize, result, status, thumb, title } = await ytvh.data.result
-                    console.log(`Flinsky : ${ext}\n${filesize}\n${status}`)
-                    await tobz.sendFileFromUrl(from, thumb, 'thumb.jpg', `*「 YOUTUBE MP4 」*\n\n• *Judul* : ${title}\n• *Filesize* : ${filesize}\n\n*Link* : ${result} \n\nUntuk Mengurangi lag jadi silahkan download melalui link diatas `, id)
+                    const { title, size, url_video, thumbnail } = await ytvh.data.result
+                    console.log(`Flinsky : ${size}\n${ytvh.status}`)
+                    await tobz.sendFileFromUrl(from, thumbnail, 'thumb.jpg', `*「 YOUTUBE MP4 」*\n\n• *Judul* : ${title}\n• *Filesize* : ${size}\n\n*Link* : ${url_video} \n\nUntuk Mengurangi lag jadi silahkan download melalui link diatas `, id)
                 }
             } catch (err) {
                 tobz.sendText(ownerNumber, 'Error ytmp4 : '+ err)
