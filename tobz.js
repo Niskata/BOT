@@ -1774,26 +1774,24 @@ ${desc}`)
         return tobz.sendFileFromUrl(from, `https://zenzapi.xyz/api/jooxplay?search=${lagunyabang}&apikey=zenz`, `${lagunyabang}.MP3`, ' ')
         break 
     case '#play':
-        if (!isOwner) return tobz.reply(from, `Maaf command ini hanya bisa digunakan di dalam grup!`, id)
+	    if (!isGroupMsg) return tobz.reply(from, `Maaf command ini hanya bisa digunakan di dalam grup!`, id)
             if (args.length == 1) return tobz.reply(from, `Untuk mencari lagu dari youtube\n\nPenggunaan: #play judul lagu`, id)
             try {
                 const serp = body.slice(6)
-                const webplay = await fetch(`https://api.zeks.xyz/api/ytplaymp3?apikey=nishikata&q=${serp}`)
-                if (!webplay.ok) throw new Error(`Error Play : ${webplay.statusText}`)
-                const webplay1 = await webplay.json()
-                 if (webplay1.status == false) {
+                const webplay = await axios.get(`https://h4ck3rs404-api.herokuapp.com/api/ytplay?q=${serp}&apikey=404Api`)
+                 if (webplay.status == false) {
                     tobz.reply(from, `*Maaf Terdapat kesalahan saat mengambil data, mohon pilih media lain...*`, id)
                 } else {
-                    const { url_audio, title} = await webplay1.result
+                    const { title, result } = await webplay.data.result
                     tobz.reply(from, mess.wait, id)
-                    await tobz.sendFileFromUrl(from, url_audio, `${title}.mp3` , '')
+                    await tobz.sendFileFromUrl(from, result, `${title}.mp3`, '')
                     console.log(color(`Audio processed for ${processTime(t, moment())} seconds`, 'aqua'))
                 }
             } catch (err) {
                 tobz.sendText(ownerNumber, 'Error Play : '+ err)
                 tobz.reply(from, 'Jangan meminta lagu yang sama dengan sebelumnya!', id)
             }
-            break 	          
+            break 	            
         case '#ytmp3':
             if (!isGroupMsg) return tobz.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
             if (isLimit(serial)) return tobz.reply(from, `Maaf ${pushname}, Kuota Limit Kamu Sudah Habis, Ketik #limit Untuk Mengecek Kuota Limit Kamu`, id)
