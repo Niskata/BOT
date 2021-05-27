@@ -1413,7 +1413,7 @@ ${desc}`)
             if (isLimit(serial)) return tobz.reply(from, `Maaf ${pushname}, Kuota Limit Kamu Sudah Habis, Ketik #limit Untuk Mengecek Kuota Limit Kamu`, id)
             if (args.length === 1) return tobz.reply(from, 'Kirim perintah *#pinterest [query]*\nContoh : *#pinterest Renge*', id)
             const ptrsq = body.slice(11)
-            const ptrs = await axios.get('https://api.fdci.se/rep.php?gambar='+ptrsq)
+            const ptrs = await axios.get('http://fdciabdul.tech/api/pinterest/?keyword='+ptrsq)
             const b = JSON.parse(JSON.stringify(ptrs.data))
             const ptrs2 =  b[Math.floor(Math.random() * b.length)]
             const image = await bent("buffer")(ptrs2)
