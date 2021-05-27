@@ -1422,7 +1422,7 @@ ${desc}`)
             break
 	case '#ahego':
             if (!isGroupMsg) return tobz.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
-            tobz.sendFileFromUrl(from, `https://https://zenzapi.xyz/api/random/ahegao?apikey=zenz`, 'LEWD.jpeg', '[ H3H3H3 BOII ]')
+            tobz.sendFileFromUrl(from, `https://zenzapi.xyz/api/random/ahegao?apikey=zenz`, 'LEWD.jpeg', '[ H3H3H3 BOII ]')
             break
         case '#lewd':
             if (!isGroupMsg) return tobz.reply(from, 'Perintah ini hanya bisa di gunakan dalam group!', id)
