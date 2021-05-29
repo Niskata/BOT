@@ -963,7 +963,7 @@ module.exports = tobz = async (tobz, message) => {
             else if (args[1] === 'sucrose') {
                 await tobz.sendFileFromUrl(from, `https://pbs.twimg.com/media/EoBu7oQXUAMJjWL.jpg`, 'sucrose.jpg', 'SUCROSE')
             }
-            else if (args[1] === 'xinagling') {
+            else if (args[1] === 'xiangling') {
                 await tobz.sendFileFromUrl(from, `https://upload-os-bbs.hoyolab.com/upload/2020/11/21/63355475/5dd077533466cbbdc4087e72713bf5b6_4149424357349932943.png`, 'xiangling.png', 'XIANGLING')
             }
             else if (args[1] === 'barbara') {
